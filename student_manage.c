@@ -60,8 +60,32 @@ void queryStudent(Student *stuArr, int stuCount) {
 }
 
 void modifyStudent(Student *stuArr, int stuCount) {
-    // TODO：协作同学补充修改学生信息逻辑
+    if (stuCount == 0) {
+         printf("暂无学生信息，无法修改！\n");
+         return;
+     }
+     char mId[20];
+     printf("请输入要修改的学生学号：");
+     scanf("%s", mId);
+     int i, flag = 0;
+     for (i = 0; i < stuCount; i++) {
+         if (strcmp(stuArr[i].id, mId) == 0) {
+             printf("请输入新姓名：");
+             scanf("%s", stuArr[i].name);
+             printf("请输入新年龄：");
+             scanf("%d", &stuArr[i].age);
+             printf("请输入新成绩：");
+             scanf("%f", &stuArr[i].score);
+             flag = 1;
+             printf("修改学生信息成功！\n");
+             break;
+         }
+     }
+     if (!flag) {
+         printf("未找到该学号的学生！\n");
+     }              //nwg make
 }
+
 
 void showAllStudents(Student *stuArr, int stuCount) {
     // TODO：协作同学补充显示所有学生逻辑
